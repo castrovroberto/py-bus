@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  simulator:
+    build: ./simulator
+    ports:
+      - "5020:5020"
+
+  gateway:
+    build: ./gateway
+    depends_on:
+      - simulator
+      - influxdb
+      - mqtt_broker
+
+  api:
+    build: ./api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - gateway
+      - influxdb
+
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+  mqtt_broker:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  influxdb:
+    image: influxdb:2.7
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./influxdb/config:/etc/influxdb2
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./grafana:/etc/grafana
+    depends_on:
+      - influxdb
+

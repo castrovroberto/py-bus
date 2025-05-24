@@ -1,0 +1,36 @@
+modbus_server:
+  host: "simulator" # Docker service name for the simulator
+  port: 5020
+  slaves:
+    - id: 1
+      name: "SimulatedDevice1"
+      polling_interval_seconds: 5
+      registers_to_poll:
+        holding_registers:
+          - address: 0
+            count: 2
+        input_registers:
+          - address: 0
+            count: 2
+        coils:
+          - address: 0
+            count: 1
+          - address: 10
+            count: 1
+        discrete_inputs:
+          - address: 0
+            count: 1
+          - address: 5
+            count: 1
+
+influxdb:
+  url: "http://influxdb:8086"
+  token: "your-influxdb-token" # Replace with your actual token or load from env
+  org: "your-org"
+  bucket: "modbus_data"
+
+mqtt:
+  broker_host: "mqtt_broker"
+  broker_port: 1883
+  topic_prefix: "modbus/gateway"
+  control_command_topic: "modbus/gateway/control/command" # Topic for receiving write commands 

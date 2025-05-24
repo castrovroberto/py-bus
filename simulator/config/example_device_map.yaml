@@ -1,0 +1,36 @@
+devices:
+  - name: "Device1"
+    address: 1
+    registers:
+      holding_registers: # 0x03
+        - address: 0
+          value: 100
+          trend: "linear" # linear, random, sinusoidal
+          params: # trend specific parameters
+            slope: 1 # for linear
+        - address: 1
+          value: 25.5
+          trend: "random"
+          params:
+            min: 20
+            max: 30
+      input_registers: # 0x04
+        - address: 0
+          value: 1234
+        - address: 1
+          value: 5678
+          trend: "sinusoidal"
+          params:
+            amplitude: 10
+            frequency: 0.1
+            offset: 50
+      coils: # 0x01
+        - address: 0
+          value: true
+        - address: 10
+          value: false
+      discrete_inputs: # 0x02
+        - address: 0
+          value: true
+        - address: 5
+          value: false 

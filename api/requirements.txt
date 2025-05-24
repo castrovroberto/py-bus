@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+python-jose[cryptography]
+influxdb-client
+PyYAML
+# Add other dependencies as needed, e.g., for database models if not using basic dicts
+# databases[sqlite] # Example if you were to use a relational DB
+# psycopg2-binary # For PostgreSQL 

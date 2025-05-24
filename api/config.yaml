@@ -1,0 +1,17 @@
+influxdb:
+  url: "http://influxdb:8086"
+  token: "your-influxdb-token" # Replace with your actual token or load from ENV
+  org: "your-org"
+  bucket: "modbus_data"
+
+mqtt_broker: # For later use with real-time updates
+  host: "mqtt_broker"
+  port: 1883
+  api_client_id: "modbus_api_subscriber"
+  data_topic_prefix: "modbus/gateway"
+  control_command_topic: "modbus/gateway/control/command" # Topic API publishes commands to
+
+jwt:
+  secret_key: "your-very-secret-key-please-change-in-production" # CHANGE THIS!
+  algorithm: "HS256"
+  access_token_expire_minutes: 30 
