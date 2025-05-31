@@ -38,7 +38,7 @@ This project aims to build a modular, extensible suite of tools to simulate Modb
 *   **Containerization:** Dockerized the gateway service. 🐳
 *   **Docker Compose Updates:** Linked services in `docker-compose.yml`.
 
-### Milestone 3: 🖥️ API & Web Dashboard ( częściowo ukończone)
+### Milestone 3: 🖥️ API & Web Dashboard ( Partially completed)
 *   **A. API Layer (`api/`) (✅ Completed)**
     *   **Framework:** FastAPI with Python (🐍).
     *   **Endpoints:**
